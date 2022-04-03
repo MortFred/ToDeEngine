@@ -1,4 +1,4 @@
-#ifdef HELLOCPPUTEST
+#ifndef HELLOCPPUTEST
 #define HELLOCPPUTEST
 
 #include <stdint.h>
