@@ -6,16 +6,20 @@ LDIR =./lib
 
 CC=clang++
 CPPFLAGS=-I$(IDIR) -I$(IDIR)/util
+LINKER_FLAFS=-lSDL2
 LIBS=-lm
 
-_DEPS = HelloCpputest.h
+_DEPS = HelloCpputest.h 
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
 _OBJ = HelloCpputest.o 
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
-$(ODIR)/%.o: $(SRC_DIR)/%.cpp $(DEPS)
-	$(CC) -c -o $@ $< $(CPPFLAGS)
+# $(ODIR)/%.o: $(SRC_DIR)/%.cpp $(DEPS)
+# 	$(CC) -c -o $@ $< $(CPPFLAGS)
+# HelloCpputest.o: $(SRC_DIR)/HelloCpputest.cpp $(IDIR)/HelloCpputest.h
+# 	$(CC) -c $(SRC_DIR)/HelloCpputest.cpp -o HelloCpputest.o $(CPPFLAGS)
+main.o: 
 
 test:
 	make -C $(TEST_DIR)
@@ -23,8 +27,8 @@ test:
 test_clean:
 	make -C $(TEST_DIR) clean
 
-HelloCpputest: $(OBJ)
-	$(CC) -o $@ $^ $(CPPFLAGS) $(LIBS)
+# HelloCpputest: HelloCpputest.o
+# 	$(CC) HelloCpputest.o -o HelloCpputest $(CPPFLAGS) $(LIBS) 
 
 all: test HelloCpputest
 

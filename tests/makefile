@@ -40,7 +40,7 @@ CPPUTEST_WARNINGFLAGS += -Wno-missing-noreturn
 endif
 
 CPPUTEST_WARNINGFLAGS += -Wall
-# CPPUTEST_WARNINGFLAGS += -Werror
+CPPUTEST_WARNINGFLAGS += -Wzero-as-null-pointer-constant
 CPPUTEST_WARNINGFLAGS += -Wfatal-errors
 CPPUTEST_WARNINGFLAGS += -Wswitch-default
 CPPUTEST_WARNINGFLAGS += -Wno-format-nonliteral
@@ -56,6 +56,6 @@ CPPUTEST_CXXFLAGS += -Wno-c++14-compat
 CPPUTEST_CXXFLAGS += --std=c++11
 CPPUTEST_CXXFLAGS += -Wno-c++98-compat-pedantic
 CPPUTEST_CXXFLAGS += -Wno-c++98-compat
-# CPPUTEST_CXXFLAGS += -target x86_64
+CPPUTEST_CXXFLAGS += -target arm64
 
 include $(CPPUTEST_HOME)/build/MakefileWorker.mk
