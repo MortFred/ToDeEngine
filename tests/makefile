@@ -56,6 +56,6 @@ CPPUTEST_CXXFLAGS += -Wno-c++14-compat
 CPPUTEST_CXXFLAGS += --std=c++11
 CPPUTEST_CXXFLAGS += -Wno-c++98-compat-pedantic
 CPPUTEST_CXXFLAGS += -Wno-c++98-compat
-CPPUTEST_CXXFLAGS += -target arm64
+# CPPUTEST_CXXFLAGS += -target arm64
 
 include $(CPPUTEST_HOME)/build/MakefileWorker.mk

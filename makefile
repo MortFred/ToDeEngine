@@ -5,21 +5,14 @@ ODIR = $(SRC_DIR)/obj
 LDIR =./lib
 
 CC=clang++
-CPPFLAGS=-I$(IDIR) -I$(IDIR)/util
-LINKER_FLAFS=-lSDL2
-LIBS=-lm
+CPPFLAGS= -I$(IDIR) -I$(IDIR)/util
+LINKER_FLAGS= -lSDL2 -lm
 
-_DEPS = HelloCpputest.h 
-DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
+src/obj/main.o: src/main.cpp include/HelloCpputest.h include/HelloSDL.h
+	$(CC) -c -o $@ src/main.cpp src/HelloSDL.cpp $(CPPFLAGS)
 
-_OBJ = HelloCpputest.o 
-OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
-
-# $(ODIR)/%.o: $(SRC_DIR)/%.cpp $(DEPS)
-# 	$(CC) -c -o $@ $< $(CPPFLAGS)
-# HelloCpputest.o: $(SRC_DIR)/HelloCpputest.cpp $(IDIR)/HelloCpputest.h
-# 	$(CC) -c $(SRC_DIR)/HelloCpputest.cpp -o HelloCpputest.o $(CPPFLAGS)
-main.o: 
+src/obj/HelloSDL.o: src/HelloSDL.cpp include/HelloSDL.h
+	$(CC) -c -o $@ src/HelloSDL.cpp $(CPPFLAGS)
 
 test:
 	make -C $(TEST_DIR)
@@ -27,12 +20,39 @@ test:
 test_clean:
 	make -C $(TEST_DIR) clean
 
-# HelloCpputest: HelloCpputest.o
-# 	$(CC) HelloCpputest.o -o HelloCpputest $(CPPFLAGS) $(LIBS) 
+ToDe: src/obj/main.o src/obj/HelloSDL.o
+	$(CC) -o $@ $^ $(LINKER_FLAGS)
 
-all: test HelloCpputest
+all: test ToDe
 
 .PHONY: clean
-
 clean: test_clean
-	rm -f $(ODIR)/*.o *~ core $(INCDIR)/*~ 
+	rm -f $(obj) ToDe
+
+
+# src = $(wildcard src/*.c)
+# obj = $(src:.c=.o)
+# dep = $(obj:.o=.d)
+
+# -include $(dep)
+
+# LDFLAGS = -lGL -lglut -lpng -lz -lm
+# .PHONY: clean
+
+# clean: test_clean
+# 	rm -f $(ODIR)/*.o *~ core $(INCDIR)/*~ 
+# _DEPS = HelloCpputest.h 
+# DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
+
+# _OBJ = HelloCpputest.o 
+# OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
+
+# main: main.o module1.o module2.o
+#     g++ main.o module1.o module2.o -o main
+# main: main.o module1.o module2.o
+#     gcc $^ -o $@
+
+# $(ODIR)/%.o: $(SRC_DIR)/%.cpp $(DEPS)
+# 	$(CC) -c -o $@ $< $(CPPFLAGS)
+# HelloCpputest.o: $(SRC_DIR)/HelloCpputest.cpp $(IDIR)/HelloCpputest.h
+# 	$(CC) -c $(SRC_DIR)/HelloCpputest.cpp -o HelloCpputest.o $(CPPFLAGS)

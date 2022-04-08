@@ -1,6 +1,6 @@
 #ifndef HELLOSDL
 #define HELLOSDL
 
-void OpenWindow();
+int OpenWindow();
 
 #endif
