@@ -5,5 +5,6 @@
 int main() 
 {
     InitGameWindow();
+    LoadMedia();
     return 1;
 }

@@ -1,5 +1,6 @@
 #include "HelloSDL.h"
 #include <iostream>
+#include <stdlib.h>
 #include <SDL2/SDL.h>
 #include <stdio.h>
 
@@ -41,6 +42,27 @@ bool InitGameWindow()
     //Get mainWindow surface
     screenSurface = SDL_GetWindowSurface(mainWindow);
     return true;
+}
+
+bool LoadMedia()
+{
+    std::string imagePath;
+    imagePath.append(std::getenv("PWD"));
+    imagePath.append("/media/Morten_headshot.bmp");
+    std::cout<<imagePath<<std::endl;
+
+    helloWorld = SDL_LoadBMP("media/Morten_headshot.bmp");
+    if(helloWorld == NULL)
+    {
+        printf("Unable to load image %s! SDL Error: %s\n", "/media/Morten_headshot.bmp", SDL_GetError());
+        return false;
+    }
+    return true;
+}
+
+void CloseGameWindow()
+{
+    return;
 }
 
     //         //Fill the surface white
