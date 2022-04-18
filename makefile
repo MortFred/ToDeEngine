@@ -9,7 +9,7 @@ CPPFLAGS= -I$(IDIR) -I$(IDIR)/util
 LINKER_FLAGS= -lSDL2 -lm
 
 src/obj/main.o: src/main.cpp include/HelloCpputest.h include/HelloSDL.h
-	$(CC) -c -o $@ src/main.cpp src/HelloSDL.cpp $(CPPFLAGS)
+	$(CC) -c -o $@ src/main.cpp $(CPPFLAGS)
 
 src/obj/HelloSDL.o: src/HelloSDL.cpp include/HelloSDL.h
 	$(CC) -c -o $@ src/HelloSDL.cpp $(CPPFLAGS)
@@ -27,7 +27,7 @@ all: test ToDe
 
 .PHONY: clean
 clean: test_clean
-	rm -f $(obj) ToDe
+	rm -f *.o $(ODIR)/*.o ToDe
 
 
 # src = $(wildcard src/*.c)

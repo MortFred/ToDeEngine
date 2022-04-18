@@ -1,6 +1,8 @@
 #ifndef HELLOSDL
 #define HELLOSDL
 
-int OpenWindow();
+bool InitGameWindow();
+bool LoadMedia();
+void CloseGameWindow();
 
 #endif

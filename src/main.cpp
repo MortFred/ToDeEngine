@@ -4,6 +4,6 @@
 
 int main() 
 {
-    OpenWindow();
+    InitGameWindow();
     return 1;
 }
