@@ -53,7 +53,7 @@ CPPUTEST_CFLAGS += -pedantic
 CPPUTEST_CFLAGS += -Wno-missing-prototypes
 CPPUTEST_CFLAGS += -Wno-strict-prototypes
 CPPUTEST_CXXFLAGS += -Wno-c++14-compat
-CPPUTEST_CXXFLAGS += --std=c++11
+CPPUTEST_CXXFLAGS += --std=c++17
 CPPUTEST_CXXFLAGS += -Wno-c++98-compat-pedantic
 CPPUTEST_CXXFLAGS += -Wno-c++98-compat
 # CPPUTEST_CXXFLAGS += -target arm64
